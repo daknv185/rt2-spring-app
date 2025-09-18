@@ -6,6 +6,12 @@
 </head>
 <body class="admin user_regist_check_admin">
 	<h3>社員登録確認画面</h3>
+			<p>
+			<span th:each="error:${#fields.detailedErrors()}"> 
+				<span th:text="${error.message}" class="error"></span><br />
+			</span>
+			<span th:text="${errMessage}" class="error"></span>
+		</p>
 	<div class="update">
 		<div class="form">
 			<div class="label">パスワード：</div>

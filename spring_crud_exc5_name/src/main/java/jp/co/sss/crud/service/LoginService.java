@@ -51,16 +51,24 @@ public class LoginService {
 	//TODO ここに記述
 	public LoginResultBean execute(LoginForm loginForm) {
 		Employee empSearch = repository.findByEmpIdAndEmpPass(loginForm.getEmpId(), loginForm.getEmpPass());
-		EmployeeBean loginRes = BeanManager.copyEntityToBean(empSearch);
 		LoginResultBean logResBean = null;
+		if (empSearch != null) {
+			EmployeeBean loginRes = BeanManager.copyEntityToBean(empSearch);
 
-		if (loginRes == null) {
-			logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています");
-		} else {
-			logResBean = LoginResultBean.succeedLogin(loginRes);
+
+			if (loginRes == null) {
+				logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています");
+			} else {
+				logResBean = LoginResultBean.succeedLogin(loginRes);
+			}
+
+			return logResBean;
+		}else {
+			logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています(できた；；)");
+			return logResBean;
+			
 		}
 
-		return logResBean;
 
 	}
 }
