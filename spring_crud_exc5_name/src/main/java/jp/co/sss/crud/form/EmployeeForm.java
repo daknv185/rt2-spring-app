@@ -21,7 +21,7 @@ public class EmployeeForm {
 	@NotBlank
 	@Size(max = 30)
 	private String empName;
-
+	
 	/** 性別 */
 
 	private Integer gender;
