@@ -26,6 +26,7 @@ public class RegistrationController {
 	 */
 	@RequestMapping(path = "/regist/input", method = RequestMethod.GET)
 	public String inputRegist(@ModelAttribute EmployeeForm employeeForm) {
+		
 		employeeForm.setGender(Constant.DEFAULT_GENDER);
 		employeeForm.setAuthority(Constant.DEFAULT_AUTHORITY);
 		employeeForm.setDeptId(Constant.DEFAULT_DEPT_ID);

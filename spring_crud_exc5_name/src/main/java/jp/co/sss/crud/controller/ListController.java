@@ -72,7 +72,12 @@ public class ListController {
 
 		List<EmployeeBean> searchByDepartmentList = searchForEmployeesByDepartmentService.execute(deptId);
 
-		model.addAttribute("employees", searchByDepartmentList);
-		return "list/list";
+		if (deptId != 0) {
+
+			model.addAttribute("employees", searchByDepartmentList);
+			return "list/list";
+		} else {
+			return "redirect:/list";
+		}
 	}
 }

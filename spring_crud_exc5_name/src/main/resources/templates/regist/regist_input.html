@@ -1,38 +1,40 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-    th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+<html xmlns:th="http://www.thymeleaf.org" th:replace="~{common/layout_4block :: layout(~{::body/content()})}">
+
 <head>
 	<title>会員登録入力 | シェアードショップ</title>
 	<meta charset="UTF-8" />
 </head>
+
 <body class="admin user_regist_input_admin">
 	<h3>社員登録入力画面</h3>
-	
 
-	
+
+
 	<div class="update">
 		<form th:action="@{/regist/check}" method="post" th:object="${employeeForm}">
-							<!-- エラーメッセージの出力(入力チェック) -->
-		<p>
-			<span th:each="error:${#fields.detailedErrors()}"> 
-				<span th:text="${error.message}" class="error"></span><br>
-			</span>
+			<!-- エラーメッセージの出力(入力チェック) -->
+			<p>
+				<span th:each="error:${#fields.detailedErrors()}">
+					<span th:text="${error.message}" class="error"></span><br>
+				</span>
 
-		</p>
+			</p>
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
-					<input type="password" th:field="*{empPass}" />
+					<input type="password" id="password-input" th:field="*{empPass}" />
+					<input type="button" id="toggle-password" value="表示">
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">社員名：</div>
- 				<div class="input required">
+				<div class="input required">
 					<input type="text" th:field="*{empName}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">性別：</div>
 				<div class="input">
@@ -40,14 +42,14 @@
 					<input type="radio" th:field="*{gender}" value="2" />女性
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">住所：</div>
 				<div class="input required">
 					<input type="text" th:field="*{address}" />
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label">生年月日：(YYYY/MM/DD)</div>
 				<div class="input required">
@@ -73,7 +75,7 @@
 					</select>
 				</div>
 			</div>
-			
+
 			<div class="form">
 				<div class="label"></div>
 				<div class="input">
@@ -81,7 +83,7 @@
 				</div>
 			</div>
 		</form>
-		
+
 		<form th:action="@{/list}" name="back">
 			<div class="form">
 				<div class="label"></div>
@@ -90,6 +92,8 @@
 				</div>
 			</div>
 		</form>
-    </div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/showPassword.js}" charset="UTF-8"></script>
 </body>
+
 </html>

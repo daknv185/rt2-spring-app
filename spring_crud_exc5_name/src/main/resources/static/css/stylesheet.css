@@ -79,6 +79,7 @@ table td {
 	padding-left: 5px;
 }
 
+
 /* ---- 入力フォーム(検索、登録、変更、削除) ---- */
 div.form {
 	display: flex;
@@ -129,7 +130,10 @@ div.login_input {
 	width: 410px;
 	height: 35px;
 	text-align: left;
+	position: relative;
 }
+
+
  
 
 /* ---- 処理完了メッセージの出力箇所 ---- */
@@ -147,6 +151,12 @@ input[type=submit] {
 	padding: 0px 10px;
 	border-radius: 6px;
 	color: #12526d;
+	transition: 0.3s;
+}
+
+input[type=submit]:hover {
+  background-color: #87CEEB;
+  cursor: pointer;
 }
 
 /* ---- エラーメッセージ ---- */
@@ -156,5 +166,24 @@ input[type=submit] {
 
 .warning {
 	color: #FF0000;
+}
+
+/* ---- <a>タグの設定 ---- */
+
+a{
+	transition: 0.3s;
+	text-decoration: none;
+}
+
+a:visited {
+  color: rgb(0, 0, 208);
+}
+
+a:hover {
+  color: darkblue;
+}
+
+a:active {
+  color: darkblue;
 }
 

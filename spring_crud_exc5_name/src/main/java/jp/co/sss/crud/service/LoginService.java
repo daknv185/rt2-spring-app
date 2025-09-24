@@ -61,7 +61,6 @@ public class LoginService {
 			} else {
 				logResBean = LoginResultBean.succeedLogin(loginRes);
 			}
-
 			return logResBean;
 		}else {
 			logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています(できた；；)");

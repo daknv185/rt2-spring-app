@@ -20,7 +20,9 @@
 			<div class="form">
 				<div class="label">パスワード：</div>
 				<div class="input required">
-					<input type="password" th:field="*{empPass}" />
+					<input type="password" id="password-input" th:field="*{empPass}" />
+					<input type="button" id="toggle-password" value="表示">
+					
 				</div>
 			</div>
 			
@@ -90,5 +92,6 @@
 			</div>
 		</form>
 	</div>
+	<script type="text/javascript" th:src="@{/js/showPassword.js}" charset="UTF-8"></script>
 </body>
 </html>
