@@ -6,12 +6,15 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import jp.co.sss.crud.bean.EmployeeBean;
 import jp.co.sss.crud.service.SearchAllEmployeesService;
+import jp.co.sss.crud.service.SearchForEmployeesByAddressService;
 import jp.co.sss.crud.service.SearchForEmployeesByDepartmentService;
+import jp.co.sss.crud.service.SearchForEmployeesByEmpIdService;
 import jp.co.sss.crud.service.SearchForEmployeesByEmpNameService;
 
 @Controller
@@ -25,6 +28,12 @@ public class ListController {
 
 	@Autowired
 	SearchForEmployeesByDepartmentService searchForEmployeesByDepartmentService;
+
+	@Autowired
+	SearchForEmployeesByEmpIdService searchForEmployeesByEmpIdService;
+
+	@Autowired
+	SearchForEmployeesByAddressService searchForEmployeesByAddressService;
 
 	/**
 	 * 社員情報を全件検索した結果を出力
@@ -79,5 +88,26 @@ public class ListController {
 		} else {
 			return "redirect:/list";
 		}
+	}
+
+	@GetMapping("/list/empId")
+	public String findByEmpId(Integer empId, Model model) {
+
+		if (empId != null) {
+			EmployeeBean searchByEmpId = searchForEmployeesByEmpIdService.execute(empId);
+
+			model.addAttribute("employees", searchByEmpId);
+			return "list/list";
+		} else {
+			return "redirect:/list";
+		}
+	}
+
+	@GetMapping("/list/empAdress")
+	public String findByAddress(String empAdress, Model model) {
+		List<EmployeeBean> searchByAddressList = searchForEmployeesByAddressService.execute(empAdress);
+
+		model.addAttribute("employees", searchByAddressList);
+		return "list/list";
 	}
 }

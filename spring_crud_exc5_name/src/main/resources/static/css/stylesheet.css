@@ -29,7 +29,8 @@ table {
 	margin: 0px auto 20px;
 }
 
-table td, table th {
+table td,
+table th {
 	border-width: 1px;
 	border-style: solid;
 	border-color: #87CEEB;
@@ -104,7 +105,7 @@ div.input {
 	width: 470px;
 	height: 35px;
 	text-align: left;
-	
+
 }
 
 select {
@@ -114,9 +115,10 @@ select {
 
 /* ---- 入力フォーム(ログイン) ---- */
 
-.login_form{
+.login_form {
 	display: flex;
 }
+
 div.login_label {
 
 	width: 305px;
@@ -126,7 +128,7 @@ div.login_label {
 }
 
 div.login_input {
-	
+
 	width: 410px;
 	height: 35px;
 	text-align: left;
@@ -134,13 +136,20 @@ div.login_input {
 }
 
 
- 
+
 
 /* ---- 処理完了メッセージの出力箇所 ---- */
 div.message {
 	height: 150px;
 	padding-top: 30px;
 	text-align: center;
+}
+
+div.backToList {
+	height: 150px;
+	padding-top: 30px;
+	text-align: center;
+	vertical-align: bottom;
 }
 
 /* ---- ボタン全般 ---- */
@@ -155,8 +164,8 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-  background-color: #87CEEB;
-  cursor: pointer;
+	background-color: #87CEEB;
+	cursor: pointer;
 }
 
 /* ---- エラーメッセージ ---- */
@@ -170,20 +179,19 @@ input[type=submit]:hover {
 
 /* ---- <a>タグの設定 ---- */
 
-a{
+a {
 	transition: 0.3s;
 	text-decoration: none;
 }
 
 a:visited {
-  color: rgb(0, 0, 208);
+	color: rgb(0, 0, 208);
 }
 
 a:hover {
-  color: darkblue;
+	color: darkblue;
 }
 
 a:active {
-  color: darkblue;
+	color: darkblue;
 }
-

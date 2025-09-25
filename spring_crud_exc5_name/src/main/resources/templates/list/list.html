@@ -6,7 +6,7 @@
 	<meta charset="UTF-8" />
 </head>
 
-<body class="admin user_list">
+<body id="page_top" class="admin user_list">
 	<h3>社員一覧画面</h3>
 
 	<div class="regist_link">
@@ -23,50 +23,58 @@
 		</div>
 	</th:block>
 	<!--	該当社員がいる場合-->
-	<table class="list_table" th:if="!${#lists.isEmpty(employees)}">
-		<tr>
-			<th>社員ID</th>
-			<th>社員名</th>
-			<th class="gender">性別</th>
-			<th class="address">住所</th>
-			<th class="birthday">生年月日</th>
-			<th class="authority">権限</th>
-			<th class="deptName">部署名</th>
-			<th class="button">変更</th>
-			<th class="button">削除</th>
-		</tr>
-		<tr th:each="employee: ${employees}">
-			<td th:text="${employee.empId}"></td>
-			<td th:text="${employee.empName}"></td>
-			<!--
+	<div th:if="!${#lists.isEmpty(employees)}">
+		<table id="empTable" class="list_table" >
+			<tr>
+				<th>社員ID</th>
+				<th>社員名</th>
+				<th class="gender">性別</th>
+				<th class="address">住所</th>
+				<th class="birthday">生年月日</th>
+				<th class="authority">権限</th>
+				<th class="deptName">部署名</th>
+				<th class="button">変更</th>
+				<th class="button">削除</th>
+			</tr>
+			<tr th:each="employee: ${employees}">
+				<td th:text="${employee.empId}"></td>
+				<td th:text="${employee.empName}"></td>
+				<!--
 				th:switchとth:caseはJavaのswitch文の様に条件分岐を表現できる
 				この場合はgender=1の場合[男性]、gender=2の場合[女性]と表示される
 			-->
-			<td th:switch="${employee.gender}">
-				<span th:case="1">男性</span> <span th:case="2">女性</span>
-			</td>
-			<td th:text="${employee.address}"></td>
-			<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
-			<td th:switch="${employee.authority}">
-				<span th:case="1">一般</span> <span th:case="2">管理者</span>
-			</td>
-			<td th:text="${employee.deptName}"></td>
-			<td>
-				<form method="get" th:action="@{/update/input}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<div class="hover">
-					<input type="submit" value="変更" />
-					</div>
-				</form>
-			</td>
-			<td>
-				<form method="get" th:action="@{/delete/check}">
-					<input type="hidden" name="empId" th:value="${employee.empId}" />
-					<input type="submit" value="削除" class="delete" />
-				</form>
-			</td>
-		</tr>
-	</table>
+				<td th:switch="${employee.gender}">
+					<span th:case="1">男性</span> <span th:case="2">女性</span>
+				</td>
+				<td th:text="${employee.address}"></td>
+				<td th:text="${#dates.format(employee.birthday, 'yyyy/MM/dd')}"></td>
+				<td th:switch="${employee.authority}">
+					<span th:case="1">一般</span> <span th:case="2">管理者</span>
+				</td>
+				<td th:text="${employee.deptName}"></td>
+				<td>
+					<form method="get" th:action="@{/update/input}">
+						<input type="hidden" name="empId" th:value="${employee.empId}" />
+						<div class="hover">
+							<input type="submit" value="変更" />
+						</div>
+					</form>
+				</td>
+				<td>
+					<form method="get" th:action="@{/delete/check}">
+						<input type="hidden" name="empId" th:value="${employee.empId}" />
+						<input type="submit" value="削除" class="delete" />
+					</form>
+				</td>
+			</tr>
+		</table>
+		<div class="backToList">
+			<p class="back_to_top_link">
+				<a th:href="@{/list}" id="backToList">一覧表示に戻る</a>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript" th:src="@{/js/rownum.js}" charset="UTF-8"></script>
 </body>
 
 </html>

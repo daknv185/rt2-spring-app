@@ -34,8 +34,6 @@ public class AccountCheckFilter extends HttpFilter {
 				session.invalidate();
 				response.sendRedirect("/spring_crud/");
 				return;
-			} else {
-				chain.doFilter(request, response);
 			}
 		} else {
 			chain.doFilter(request, response);

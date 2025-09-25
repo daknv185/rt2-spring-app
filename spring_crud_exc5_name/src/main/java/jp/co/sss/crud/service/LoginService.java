@@ -63,11 +63,9 @@ public class LoginService {
 			}
 			return logResBean;
 		}else {
-			logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています(できた；；)");
+			logResBean = LoginResultBean.failLogin("社員ID、またはパスワードが間違っています");
 			return logResBean;
 			
 		}
-
-
 	}
 }

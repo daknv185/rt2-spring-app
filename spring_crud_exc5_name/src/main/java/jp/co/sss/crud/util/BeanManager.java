@@ -164,18 +164,22 @@ public class BeanManager {
 
 	public static EmployeeBean copyEntityToBean(Employee employee) {
 
-		EmployeeBean employeeBean = new EmployeeBean();
+		if (employee != null) {
 
-		employeeBean.setEmpId(employee.getEmpId());
-		employeeBean.setEmpPass(employee.getEmpPass());
-		employeeBean.setEmpName(employee.getEmpName());
-		employeeBean.setGender(employee.getGender());
-		employeeBean.setAddress(employee.getAddress());
-		employeeBean.setBirthday(employee.getBirthday());
-		employeeBean.setAuthority(employee.getAuthority());
-		employeeBean.setDeptId(employee.getDepartment().getDeptId());
+			EmployeeBean employeeBean = new EmployeeBean();
 
-		return employeeBean;
+			employeeBean.setEmpId(employee.getEmpId());
+			employeeBean.setEmpPass(employee.getEmpPass());
+			employeeBean.setEmpName(employee.getEmpName());
+			employeeBean.setGender(employee.getGender());
+			employeeBean.setAddress(employee.getAddress());
+			employeeBean.setBirthday(employee.getBirthday());
+			employeeBean.setAuthority(employee.getAuthority());
+			employeeBean.setDeptId(employee.getDepartment().getDeptId());
+
+			return employeeBean;
+		} else {
+			return null;
+		}
 	}
-
 }

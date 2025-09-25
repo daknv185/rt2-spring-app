@@ -38,10 +38,11 @@ public class SearchForEmployeesByEmpIdService {
 	 */
 	public EmployeeBean execute(Integer empId) {
 
-		Employee employee = repository.getReferenceById(empId);
-		EmployeeBean employeeBean = BeanManager.copyEntityToBean(employee);
+		Employee employee = repository.findByEmpId(empId);
 
-		return employeeBean;
+			EmployeeBean employeeBean = BeanManager.copyEntityToBean(employee);
+			
+			return employeeBean;
+		}
+
 	}
-
-}
