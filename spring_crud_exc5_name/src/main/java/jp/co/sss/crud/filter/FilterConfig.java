@@ -7,14 +7,14 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class FilterConfig implements WebMvcConfigurer {
-	/*	@Bean
-		public FilterRegistrationBean<AccountCheckFilter> configAccountCheckFilter() {
-			FilterRegistrationBean<AccountCheckFilter> bean = new FilterRegistrationBean<AccountCheckFilter>();
-	
-			bean.setFilter(new AccountCheckFilter());
-			bean.setOrder(2);
-			return bean;
-		}*/
+	@Bean
+	public FilterRegistrationBean<AccountCheckFilter> configAccountCheckFilter() {
+		FilterRegistrationBean<AccountCheckFilter> bean = new FilterRegistrationBean<AccountCheckFilter>();
+
+		bean.setFilter(new AccountCheckFilter());
+		bean.setOrder(2);
+		return bean;
+	}
 
 	@Bean
 	public FilterRegistrationBean<LoginCheckFilter> configLoginCheckFilter() {
