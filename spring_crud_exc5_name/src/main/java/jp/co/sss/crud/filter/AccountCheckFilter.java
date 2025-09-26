@@ -1,4 +1,4 @@
-package jp.co.sss.crud.filter;
+/*package jp.co.sss.crud.filter;
 
 import java.io.IOException;
 
@@ -26,9 +26,9 @@ public class AccountCheckFilter extends HttpFilter {
 			chain.doFilter(request, response);
 		}
 
-		if (requestURL.endsWith("/delete/check") || requestURL.endsWith("/regist/input")) {
+		if (requestURL.endsWith("/delete/check") || requestURL.indexOf("/regist/") != -1 || requestURL.indexOf("/delete/") != -1) {
 			EmployeeBean loginUser = (EmployeeBean) session.getAttribute("loginUser");
-			
+			System.out.println(loginUser.getAuthority());
 			
 			if (loginUser.getAuthority() == 1 || loginUser == null) {
 				session.invalidate();
@@ -41,7 +41,9 @@ public class AccountCheckFilter extends HttpFilter {
 		}
 		if (requestURL.endsWith("/")){
 			session.invalidate();
+			
 		}
 
 	}
 }
+*/
