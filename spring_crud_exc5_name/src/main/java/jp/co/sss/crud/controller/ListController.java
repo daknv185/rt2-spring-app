@@ -91,7 +91,17 @@ public class ListController {
 	}
 
 	@GetMapping("/list/empId")
-	public String findByEmpId(Integer empId, Model model) {
+	public String findByEmpId(String strEmpId, Model model) {
+
+		Integer empId;
+
+		if (strEmpId == null || strEmpId.isEmpty()) {
+			empId = null;
+		} else if (strEmpId.matches("\\d+")) {
+			empId = Integer.valueOf(strEmpId);
+		} else {
+			empId = 0;
+		}
 
 		if (empId != null) {
 			EmployeeBean searchByEmpId = searchForEmployeesByEmpIdService.execute(empId);
